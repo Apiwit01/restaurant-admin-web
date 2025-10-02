@@ -1,0 +1,36 @@
+/* src/pages/ReportPage.css */
+
+/* ซ่อน element ที่ไม่ต้องการตอนสั่งพิมพ์ */
+@media print {
+    /* ซ่อน Header และ Navbar ของ Layout หลัก */
+    .mantine-AppShell-header,
+    .mantine-AppShell-navbar {
+        display: none !important;
+    }
+
+    /* ซ่อนกล่องควบคุม (ที่เลือกวันที่, ปุ่ม) */
+    .report-controls {
+        display: none !important;
+    }
+
+    /* ทำให้เนื้อหารายงานแสดงเต็มหน้ากระดาษ */
+    .mantine-AppShell-main {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* เพิ่มหัวข้อบนสุดของกระดาษ */
+    #report-content::before {
+        content: 'รายงานสรุปผล';
+        font-size: 24px;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* ป้องกันกราฟถูกตัดครึ่งหน้า */
+    .report-section {
+        page-break-inside: avoid;
+    }
+}
